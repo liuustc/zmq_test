@@ -35,6 +35,8 @@ int main()
                 printf("第%d次收到client信息：%s\n", recvn++, msg2recv);
             }
             usleep(5e4);
+            if(recvn > 50)
+                break;
         }
         zmq_close(zmq_reciever);
         zmq_ctx_destroy(context);

@@ -33,6 +33,8 @@ int main()
             if(zmq_send(zmq_sender, msg2send, len, 0) >= 0)
                 printf("%d.message send!\n", recvn++);
             sleep(1);
+            if(recvn > 50)
+                break;
 
         }
         zmq_close(zmq_sender);
