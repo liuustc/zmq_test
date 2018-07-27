@@ -1,5 +1,5 @@
 INCLUDE=./include
-CMP=g++
+CMP=g++ --std=c++11
 
 all: zmq_sender zmq_recv
 zmq_sender: send.o

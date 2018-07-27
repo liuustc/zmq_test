@@ -34,6 +34,12 @@ int main()
             {
                 printf("第%d次收到client信息：%s\n", recvn++, msg2recv);
             }
+
+            char msg2reply[256] = {'\0'};
+            sprintf(msg2reply, "I've recieved %d times.", recvn-1);
+            if(zmq_send(zmq_reciever, &msg2reply, sizeof(msg2reply), 0) >= 0)
+              printf("reply for %d times\n", recvn-1);
+
             usleep(5e4);
             if(recvn > 50)
                 break;

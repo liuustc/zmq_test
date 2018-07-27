@@ -32,6 +32,10 @@ int main()
             const int len = strlen(msg2send);
             if(zmq_send(zmq_sender, msg2send, len, 0) >= 0)
                 printf("%d.message send!\n", recvn++);
+            char msg2recv[256] = {'\0'};
+            if(zmq_recv(zmq_sender, msg2recv, sizeof(msg2recv), 0) >= 0)
+                printf("recieved reply: %s\n", msg2recv);
+
             sleep(1);
             if(recvn > 50)
                 break;
